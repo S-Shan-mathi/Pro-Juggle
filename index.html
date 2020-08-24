@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ProJuggle</title>
+<link rel="stylesheet" type="text/css" href="cssstyle.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+</head>
+
+<body>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fa fa-facebook-square" style="font-size:36px;color:#385185" ></i></a>
+				<a href="#" class="social"><i class="fa fa-google" style="font-size:36px;color:red"></i></a>
+				<a href="#" class="social"><i class="fa fa-linkedin-square" style="font-size:36px;color:blue"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" id="name" placeholder="Name" />
+			<input type="email" id="email" placeholder="Email" />
+			<input type="password" id="password" placeholder="Password" />
+			<button id=btnsignup > Sign Up</button>
+			
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fa fa-facebook-square" style="font-size:36px;color:#385185" ></i></a>
+				<a href="#" class="social" id="googlebtn" onclick="GoogleLogin();"><i id="g" class="fa fa-google" style="font-size:36px;color:red"></i></a>
+				<a href="#" class="social"><i class="fa fa-linkedin-square" style="font-size:36px;color:blue"></i></a>
+				<!-- <button id="googlebtn" onclick="GoogleLogin();"><i id="g" class="fa fa-google" style="font-size:36px;color:red"></i></a></button>-->
+			</div>
+			<span>or use your account</span>
+			<input type="email"  id="email" placeholder="Email" required />
+			<input type="password" id="password" placeholder="Password" required />
+			<a href="forgotpass.php">Forgot your password?</a>
+			<a href="resetpassword.php">Reset Password</a>
+			<button id="btnsignin" type=submit a href="dashboard.php" > Sign In</a> 
+			</button> <!--a hreh-->			
+			<a href="otplogin.php">Login with OTP</a>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script> -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDIkxgdT4vNSbSEFYWqw-PrqgvYudT9unE",
+    authDomain: "projuggle.firebaseapp.com",
+    databaseURL: "https://projuggle.firebaseio.com",
+    projectId: "projuggle",
+    storageBucket: "projuggle.appspot.com",
+    messagingSenderId: "73591036201",
+    appId: "1:73591036201:web:d42875726a649ff2b5bf38",
+    measurementId: "G-MHS21XLQ4W"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="jsp/index.js" type="text/javascript"></script>
+<!--
+<script>
+    function GoogleLogin(){
+      // body...
+      var provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        //code executes after successful login
+        window.location = "home.php"
+      }).catch(function (error) {
+        var errorMessage = error.message;
+        alert("errorMessage");
+      })
+
+    }
+
+  </script>
+
+-->
+
+<!--<script>
+	firebase.auth().onAuthStateChanged(function(user)
+{
+if(user)
+{
+	windows.location.href="dashboard.html";
+}
+}
+		);
+</script>-->
+</body>
+</html>
